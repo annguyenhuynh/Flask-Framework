@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-  name = request.args["name"]
+  name = request.args.get("name","Guest")
   return render_template('index.html', placeholder=name)
 
 if __name__ == '__main__':
