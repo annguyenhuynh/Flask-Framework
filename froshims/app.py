@@ -6,12 +6,12 @@ app = Flask(__name__)
 def index():
   return render_template('index.html')
 
-@app.route("/greet",methods=["POST"])
-def greet():
-  name = request.args.get("name")
-  return render_template("greet.html", placeholder=name)
-
-
+@app.route("/register",methods=["POST"])
+def register():
+  if not request.form.get("name") or not request.form.get("sport"):
+    return render_template("failure.html")
+  return render_template("success.html")
+  
 
 if __name__ == '__main__':
   app.run(debug=True)
